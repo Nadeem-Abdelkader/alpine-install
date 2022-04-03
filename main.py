@@ -13,6 +13,7 @@ Enable and run dbus for GUI
 Disable lxdm
 """
 
+users_file_name = "users.json"
 
 def make_form(root, fields):
     entries = {}
@@ -74,8 +75,8 @@ def submit(entries):
             dict[fields[i]] = entries[fields[i]].get()
 
         ls = []
-        if os.stat("output.json").st_size != 0:
-            ls = read_from_json("output.json")
+        if os.path.exists(users_file_name) and os.stat(users_file_name).st_size != 0:
+            ls = read_from_json(users_file_name)
             ls.append(dict)
         else:
             ls.append(dict)
@@ -84,13 +85,13 @@ def submit(entries):
 
         filename = str(entries[fields[0]].get()).replace(" ", "") + ".json"
         filename = "/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename
-        filename = "output.json"
+        filename = users_file_name
         # with open(filename,
         #           "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
         #     json.dump(dict, write_file, indent=4)
 
         jsonString = json.dumps(ls, indent=4)
-        jsonFile = open("output.json", "w")
+        jsonFile = open(users_file_name, "w")
         jsonFile.write(jsonString)
         jsonFile.close()
 

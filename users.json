@@ -76,5 +76,18 @@
         "Network Name": "Test 5",
         "Gateway": "Test 5",
         "DNS": "Test 5"
+    },
+    {
+        "User Name": "Test 6",
+        "Group Name": "Test 6",
+        "Active Directory Name": "Test 6",
+        "Password": "Test 6",
+        "Re-enter Password": "Test 6",
+        "Host Name": "Test 6",
+        "Interface Name": "Test 6",
+        "IP address": "Test 6",
+        "Network Name": "Test 6",
+        "Gateway": "Test 6",
+        "DNS": "Test 6"
     }
 ]
