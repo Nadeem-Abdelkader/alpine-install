@@ -32,7 +32,8 @@ def make_form(root, fields):
 
 
 def makeLabel(root):
-    txt_title = Label(root, width=0, font=('arial', 24), text="Khwarizm Consulting")
+    txt_title = Label(root, width=0, font=(
+        'arial', 24), text="Khwarizm Consulting")
     txt_title.pack(side=TOP, padx=5, pady=5)
 
 
@@ -61,7 +62,8 @@ def submit(entries):
     for i in range(len((entries))):
         if entries[fields[i]].get() == "":
             cont = False
-            txt_result.config(text="Please complete the required field!", fg="red")
+            txt_result.config(
+                text="Please complete the required field!", fg="red")
     if entries[fields[3]].get() != entries[fields[4]].get():
         cont = False
         txt_result.config(text="Passwords do not match!", fg="red")
@@ -105,7 +107,8 @@ def submit(entries):
 
 
 def quit():
-    result = messagebox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
+    result = messagebox.askquestion(
+        'Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
     if result == 'yes':
         root.destroy()
     return
