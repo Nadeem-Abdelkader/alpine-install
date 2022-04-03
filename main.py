@@ -30,6 +30,10 @@ def submit(entries):
         if entries[fields[i]].get() == "":
             cont = False
             txt_result.config(text="Please complete the required field!", fg="red")
+    if entries['Password'].get() != entries['Re-enter Password'].get():
+        cont = False
+        txt_result.config(text="Passwords do not match!", fg="red")
+
     if cont:
         dict = {}
         for i in range(len(entries)):
@@ -39,6 +43,9 @@ def submit(entries):
 
         with open("output.json", "a") as write_file: # change "a" to "w" if you want to overwrite instead of append
             json.dump(dict, write_file, indent=4)
+
+        txt_result.config(text="Successfully submitted data!", fg="green")
+
 
 def quit():
     result = messagebox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
