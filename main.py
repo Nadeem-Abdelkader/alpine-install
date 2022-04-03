@@ -2,7 +2,7 @@ import json
 from tkinter import *
 from tkinter import messagebox
 
-fields = ('Username', 'Group', 'Active Director Name', 'Password', 'Re-enter Password', 'Hostname', 'Interface name',
+fields = ('Username', 'Group', 'Active Directory Name', 'Password', 'Re-enter Password', 'Hostname', 'Interface name',
           'IP address', 'Network', 'Gateway', 'DNS')
 
 def make_form(root, fields):
@@ -25,11 +25,20 @@ def makeLabel(root):
 
 
 def submit(entries):
-    print(entries)
-    for i in range(len(entries)-1):
-        print(entries[fields[i]].get())
-    # with open("student.json", "w") as write_file:
-    #     json.dump(entries, write_file, indent=4)
+    cont = True
+    for i in range(len((entries))):
+        if entries[fields[i]].get() == "":
+            cont = False
+            txt_result.config(text="Please complete the required field!", fg="red")
+    if cont:
+        dict = {}
+        for i in range(len(entries)):
+            dict[fields[i]] = entries[fields[i]].get()
+
+        # print(dict)
+
+        with open("output.json", "a") as write_file: # change "a" to "w" if you want to overwrite instead of append
+            json.dump(dict, write_file, indent=4)
 
 def quit():
     result = messagebox.askquestion('Khwarizm Consulting', 'Are you sure you want to exit?', icon="warning")
@@ -44,6 +53,9 @@ if __name__ == '__main__':
     makeLabel(root)
     ents = make_form(root, fields)
     root.bind('<Return>', (lambda event, e=ents: fetch(e)))
+    global txt_result
+    txt_result = Label(root)
+    txt_result.pack()
     b1 = Button(root, text='Submit', command=(lambda e=ents: submit(e)))
     b1.pack()
     b2 = Button(root, text='Quit', command= quit)
