@@ -11,6 +11,8 @@ On Startup
 Enable and run dbus for GUI
 Disable lxdm
 """
+
+
 def make_form(root, fields):
     entries = {}
     for field in fields:
@@ -27,7 +29,7 @@ def make_form(root, fields):
 
 def makeLabel(root):
     txt_title = Label(root, width=0, font=('arial', 24), text="Khwarizm Consulting")
-    txt_title.pack(side=TOP,padx=5, pady=5)
+    txt_title.pack(side=TOP, padx=5, pady=5)
 
 
 def submit(entries):
@@ -47,7 +49,8 @@ def submit(entries):
 
         # print(dict)
 
-        with open("output.json", "a") as write_file: # change "a" to "w" if you want to overwrite instead of append
+        filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
+        with open(filename, "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
             json.dump(dict, write_file, indent=4)
 
         txt_result.config(text="Successfully submitted data!", fg="green")
@@ -65,18 +68,19 @@ def quit():
         root.destroy()
     return
 
+
 if __name__ == '__main__':
     root = Tk()
     root.geometry("800x600")
     root.title("Khwarizm Consulting")
     makeLabel(root)
     ents = make_form(root, fields)
-    root.bind('<Return>', (lambda event, e=ents: fetch(e)))
+    # root.bind('<Return>', (lambda event, e=ents: fetch(e)))
     global txt_result
     txt_result = Label(root)
     txt_result.pack()
     b1 = Button(root, text='Submit', command=(lambda e=ents: submit(e)))
     b1.pack()
-    b2 = Button(root, text='Quit', command= quit)
+    b2 = Button(root, text='Quit', command=quit)
     b2.pack()
     root.mainloop()
