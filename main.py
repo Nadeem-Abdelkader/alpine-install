@@ -2,8 +2,8 @@ import json
 from tkinter import *
 from tkinter import messagebox
 
-fields = ('User Name', 'Group name', 'Active Directory Name', 'Password', 'Re-enter Password', 'Host Name',
-          'Interface name', 'IP address', 'Network Name', 'Gateway', 'DNS')
+fields = ('User Name', 'Group Name', 'Active Directory Name', 'Password', 'Re-enter Password', 'Host Name',
+          'Interface Name', 'IP address', 'Network Name', 'Gateway', 'DNS')
 
 """
 On Startup
@@ -35,6 +35,26 @@ def makeLabel(root):
     txt_title.pack(side=TOP, padx=5, pady=5)
 
 
+def read_from_json(filename):
+    input_file = open(filename)
+    json_array = json.load(input_file)
+    user_list = []
+
+    for user in json_array:
+        user_details = {"User Name": None, "Group Name": None, "Active Directory Name": None, "Password": None,
+                        "Re-enter Password": None, "Host Name": None, "Interface Name": None, "IP address": None,
+                        "Network Name": None, "Gateway": None, "DNS": None, 'User Name': user['User Name'],
+                        'Group Name': user['Group Name'], 'Active Directory Name': user['Active Directory Name'],
+                        'Password': user['Password'], 'Re-enter Password': user['Re-enter Password'],
+                        'Host Name': user['Host Name'], 'Interface Name': user['Interface Name'],
+                        'IP address': user['IP address'], 'Network Name': user['Network Name'],
+                        'Gateway': user['Gateway'], 'DNS': user['DNS']}
+
+        user_list.append(user_details)
+
+    return user_list
+
+
 def submit(entries):
     cont = True
     for i in range(len((entries))):
@@ -50,12 +70,21 @@ def submit(entries):
         for i in range(len(entries)):
             dict[fields[i]] = entries[fields[i]].get()
 
+        ls = read_from_json("output.json")
+        ls.append(dict)
         # print(dict)
 
         filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
-        with open("/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename,
-                  "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
-            json.dump(dict, write_file, indent=4)
+        filename = "/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename
+        filename = "output.json"
+        # with open(filename,
+        #           "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
+        #     json.dump(dict, write_file, indent=4)
+
+        jsonString = json.dumps(ls, indent=4)
+        jsonFile = open("output.json", "w")
+        jsonFile.write(jsonString)
+        jsonFile.close()
 
         txt_result.config(text="Successfully submitted data!", fg="green")
 
@@ -77,6 +106,7 @@ def quit():
 
 
 if __name__ == '__main__':
+    read_from_json("output.json")
     root = Tk()
     root.geometry("800x600")
     root.title("Khwarizm Consulting")
