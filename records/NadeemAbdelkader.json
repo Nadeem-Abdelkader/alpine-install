@@ -1,0 +1,13 @@
+{
+    "User Name": "Nadeem Abdelkader",
+    "Group name": "Khwarizm",
+    "Active Directory Name": "nadeem",
+    "Password": "pass1",
+    "Re-enter Password": "pass1",
+    "Host Name": "localhost",
+    "Interface name": "Interface1",
+    "IP address": "127.182.0.0.1",
+    "Network Name": "dsl",
+    "Gateway": "gateway1",
+    "DNS": "1.0.0.2.1.255"
+}

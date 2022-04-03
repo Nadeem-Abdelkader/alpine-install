@@ -53,14 +53,14 @@ def submit(entries):
         # print(dict)
 
         filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
-        with open("/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename, "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
+        with open("/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename,
+                  "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
             json.dump(dict, write_file, indent=4)
 
         txt_result.config(text="Successfully submitted data!", fg="green")
 
         for i in range(len(fields)):
             entries[fields[i]].delete(0, 'end')
-        
 
     """
     After submitting

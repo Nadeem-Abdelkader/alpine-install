@@ -1,0 +1,13 @@
+{
+    "User Name": "Test User",
+    "Group name": "Test Group",
+    "Active Directory Name": "Test AD",
+    "Password": "test",
+    "Re-enter Password": "test",
+    "Host Name": "Test Host",
+    "Interface name": "Test Interface",
+    "IP address": "Test IP",
+    "Network Name": "Test Network",
+    "Gateway": "Test Gateway",
+    "DNS": "Test DNS"
+}
