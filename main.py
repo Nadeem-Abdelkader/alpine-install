@@ -2,9 +2,15 @@ import json
 from tkinter import *
 from tkinter import messagebox
 
-fields = ('Username', 'Group', 'Active Directory Name', 'Password', 'Re-enter Password', 'Hostname', 'Interface name',
-          'IP address', 'Network', 'Gateway', 'DNS')
+fields = ('User Name', 'Group name', 'Active Directory Name', 'Password', 'Re-enter Password', 'Host Name',
+          'Interface name', 'IP address', 'Network Name', 'Gateway', 'DNS')
 
+"""
+On Startup
+
+Enable and run dbus for GUI
+Disable lxdm
+"""
 def make_form(root, fields):
     entries = {}
     for field in fields:
@@ -45,6 +51,12 @@ def submit(entries):
             json.dump(dict, write_file, indent=4)
 
         txt_result.config(text="Successfully submitted data!", fg="green")
+
+    """
+    After submitting
+    
+    Enable and run lxdm
+    """
 
 
 def quit():
