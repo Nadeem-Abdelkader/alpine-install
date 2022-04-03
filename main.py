@@ -55,6 +55,10 @@ def submit(entries):
 
         txt_result.config(text="Successfully submitted data!", fg="green")
 
+        for i in range(len(fields)):
+            entries[fields[i]].delete(0, 'end')
+        
+
     """
     After submitting
     
