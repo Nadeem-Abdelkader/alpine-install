@@ -18,7 +18,10 @@ def make_form(root, fields):
     for field in fields:
         row = Frame(root)
         lab = Label(row, width=22, text=field + ": ", anchor='w')
-        ent = Entry(row)
+        if field == "Password" or field == "Re-enter Password":
+            ent = Entry(row, show="*")
+        else:
+            ent = Entry(row)
         ent.insert(0, "")
         row.pack(side=TOP, fill=X, padx=25, pady=5)
         lab.pack(side=LEFT)
@@ -50,7 +53,7 @@ def submit(entries):
         # print(dict)
 
         filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
-        with open(filename, "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
+        with open("/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename, "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
             json.dump(dict, write_file, indent=4)
 
         txt_result.config(text="Successfully submitted data!", fg="green")
