@@ -74,12 +74,12 @@ def submit(entries):
         for i in range(len(entries)):
             dict[fields[i]] = entries[fields[i]].get()
 
-        ls = []
+        users_list = []
         if os.path.exists(users_file_name) and os.stat(users_file_name).st_size != 0:
-            ls = read_from_json(users_file_name)
-            ls.append(dict)
+            users_list = read_from_json(users_file_name)
+            users_list.append(dict)
         else:
-            ls.append(dict)
+            users_list.append(dict)
 
         # print(dict)
 
@@ -90,7 +90,7 @@ def submit(entries):
         #           "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
         #     json.dump(dict, write_file, indent=4)
 
-        jsonString = json.dumps(ls, indent=4)
+        jsonString = json.dumps(users_list, indent=4)
         jsonFile = open(users_file_name, "w")
         jsonFile.write(jsonString)
         jsonFile.close()
