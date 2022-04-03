@@ -42,14 +42,14 @@ def read_from_json(filename):
     user_list = []
 
     for user in json_array:
-        user_details = {"User Name": None, "Group Name": None, "Active Directory Name": None, "Password": None,
-                        "Re-enter Password": None, "Host Name": None, "Interface Name": None, "IP address": None,
-                        "Network Name": None, "Gateway": None, "DNS": None, 'User Name': user['User Name'],
-                        'Group Name': user['Group Name'], 'Active Directory Name': user['Active Directory Name'],
-                        'Password': user['Password'], 'Re-enter Password': user['Re-enter Password'],
-                        'Host Name': user['Host Name'], 'Interface Name': user['Interface Name'],
-                        'IP address': user['IP address'], 'Network Name': user['Network Name'],
-                        'Gateway': user['Gateway'], 'DNS': user['DNS']}
+        user_details = {fields[0]: None, fields[1]: None, fields[2]: None, fields[3]: None,
+                        fields[4]: None, fields[5]: None, fields[6]: None, fields[7]: None,
+                        fields[8]: None, fields[9]: None, fields[10]: None, fields[0]: user[fields[0]],
+                        fields[1]: user[fields[1]], fields[2]: user[fields[2]],
+                        fields[3]: user[fields[3]], fields[4]: user[fields[4]],
+                        fields[5]: user[fields[5]], fields[6]: user[fields[6]],
+                        fields[7]: user[fields[7]], fields[8]: user[fields[8]],
+                        fields[9]: user[fields[9]], fields[10]: user[fields[10]]}
 
         user_list.append(user_details)
 
@@ -62,7 +62,7 @@ def submit(entries):
         if entries[fields[i]].get() == "":
             cont = False
             txt_result.config(text="Please complete the required field!", fg="red")
-    if entries['Password'].get() != entries['Re-enter Password'].get():
+    if entries[fields[3]].get() != entries[fields[4]].get():
         cont = False
         txt_result.config(text="Passwords do not match!", fg="red")
 
@@ -70,17 +70,17 @@ def submit(entries):
         dict = {}
         for i in range(len(entries)):
             dict[fields[i]] = entries[fields[i]].get()
-        
+
         ls = []
         if os.stat("output.json").st_size != 0:
             ls = read_from_json("output.json")
             ls.append(dict)
         else:
             ls.append(dict)
-            
+
         # print(dict)
 
-        filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
+        filename = str(entries[fields[0]].get()).replace(" ", "") + ".json"
         filename = "/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename
         filename = "output.json"
         # with open(filename,
