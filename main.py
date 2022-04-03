@@ -1,4 +1,5 @@
 import json
+import os
 from tkinter import *
 from tkinter import messagebox
 
@@ -69,9 +70,14 @@ def submit(entries):
         dict = {}
         for i in range(len(entries)):
             dict[fields[i]] = entries[fields[i]].get()
-
-        ls = read_from_json("output.json")
-        ls.append(dict)
+        
+        ls = []
+        if os.stat("output.json").st_size != 0:
+            ls = read_from_json("output.json")
+            ls.append(dict)
+        else:
+            ls.append(dict)
+            
         # print(dict)
 
         filename = str(entries['User Name'].get()).replace(" ", "") + ".json"
@@ -106,7 +112,6 @@ def quit():
 
 
 if __name__ == '__main__':
-    read_from_json("output.json")
     root = Tk()
     root.geometry("800x600")
     root.title("Khwarizm Consulting")
