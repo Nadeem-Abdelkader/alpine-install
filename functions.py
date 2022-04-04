@@ -128,7 +128,7 @@ def submit(entries):
 
         txt_result.config(text="Successfully submitted data!", fg="green")
 
-        clear(entries)
+        clear(entries, True)
 
     """
     After submitting
@@ -160,7 +160,7 @@ def submit(entries):
     return
 
 
-def clear(entries):
+def clear(entries, on_submit=False):
     """
     This function is executed when the users clicks the "clear" button.
     It resets the entire form
@@ -169,7 +169,8 @@ def clear(entries):
     """
     for i in range(len(FIELDS)):
         entries[FIELDS[i]].delete(0, 'end')
-    txt_result.config(text="Cleared form!", fg="green")
+    if not on_submit:
+        txt_result.config(text="Cleared form!", fg="green")
     return
 
 

@@ -37,5 +37,18 @@
         "Network Name": "Network 1",
         "Gateway": "Gateway 1",
         "DNS": "DNS 1"
+    },
+    {
+        "User Name": "admin",
+        "Group Name": "admin",
+        "Active Directory Name": "admin",
+        "Password": "admin",
+        "Re-enter Password": "admin",
+        "Host Name": "admin",
+        "Interface Name": "admin",
+        "IP address": "admin",
+        "Network Name": "admin",
+        "Gateway": "admin",
+        "DNS": "admin"
     }
 ]
