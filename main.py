@@ -15,6 +15,7 @@ Disable lxdm
 
 users_file_name = "users.json"
 
+
 def make_form(root, fields):
     entries = {}
     for field in fields:
@@ -97,14 +98,18 @@ def submit(entries):
 
         txt_result.config(text="Successfully submitted data!", fg="green")
 
-        for i in range(len(fields)):
-            entries[fields[i]].delete(0, 'end')
+        clear(entries)
 
     """
     After submitting
     
     Enable and run lxdm
     """
+
+
+def clear(entries):
+    for i in range(len(fields)):
+        entries[fields[i]].delete(0, 'end')
 
 
 def quit():
@@ -121,12 +126,18 @@ if __name__ == '__main__':
     root.title("Khwarizm Consulting")
     makeLabel(root)
     ents = make_form(root, fields)
-    # root.bind('<Return>', (lambda event, e=ents: fetch(e)))
+    root.bind('<Return>', (lambda event, e=ents: fetch(e)))
     global txt_result
     txt_result = Label(root)
     txt_result.pack()
-    b1 = Button(root, text='Submit', command=(lambda e=ents: submit(e)))
-    b1.pack()
-    b2 = Button(root, text='Quit', command=quit)
-    b2.pack()
+    top = Frame(root)
+    top.pack(side=TOP)
+    b = Button(root, text="Submit", command=(lambda e=ents: submit(e)))
+    c = Button(root, text="Clear", command=(lambda e=ents: clear(e)))
+    d = Button(root, text="Quit", command=quit)
+
+    b.pack(in_=top, side=LEFT)
+    c.pack(in_=top, side=LEFT)
+    d.pack(in_=top, side=LEFT)
+
     root.mainloop()
