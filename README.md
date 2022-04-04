@@ -4,7 +4,7 @@
 - [Nadeem Abdelkader](https://github.com/Nadeem-Abdelkader)
 
 ## What Is This?
-This is a simple Python Tkinter form that record users data in a .json file as an array of JSON objects.
+A Python Tkinter form that record users data in a .json file as an array of JSON objects.
 
 ## Set Up and Run
 
