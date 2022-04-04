@@ -40,19 +40,7 @@ users_file_name = "users.json"
 
 def make_form(root, fields):
     entries = {}
-    for field in fields[:5]:
-        row = Frame(root)
-        lab = Label(row, width=22, text=field + ": ", anchor='w')
-        if field == "Password" or field == "Re-enter Password":
-            ent = Entry(row, show="*")
-        else:
-            ent = Entry(row)
-        ent.insert(0, "")
-        row.pack(side=TOP, fill=X, padx=25, pady=5)
-        lab.pack(side=LEFT)
-        ent.pack(side=RIGHT, expand=YES, fill=X)
-        entries[field] = ent
-    for field in fields[5:]:
+    for field in fields:
         row = Frame(root)
         lab = Label(row, width=22, text=field + ": ", anchor='w')
         if field == "Password" or field == "Re-enter Password":
