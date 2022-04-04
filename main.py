@@ -44,7 +44,7 @@ os.system(cmd)
 
 if __name__ == '__main__':
     """
-    calling the helper functions from functions.py to start and run the application
+    Calling the helper functions from functions.py to start and run the application
     """
     text_alert()
     create_buttons()
