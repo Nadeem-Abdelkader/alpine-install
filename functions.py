@@ -153,5 +153,14 @@ def create_buttons():
     d.pack(in_=top, side=LEFT)
 
 
-root = Tk()
-ents = make_form(root, fields)
+def initialise_window():
+    global root, ents
+    root = Tk()
+    ents = make_form(root, fields)
+    root.geometry("800x550")
+    root.title("Khwarizm Consulting")
+    root.bind('<Return>', (lambda event, e=ents: fetch(e)))
+    return root
+
+
+root = initialise_window()

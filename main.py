@@ -1,4 +1,4 @@
-from functions import text_alert, create_buttons, root, ents
+from functions import text_alert, create_buttons, initialise_window, root
 
 """
 On Startup
@@ -30,9 +30,6 @@ os.system(cmd)
 """
 
 if __name__ == '__main__':
-    root.geometry("800x550")
-    root.title("Khwarizm Consulting")
-    root.bind('<Return>', (lambda event, e=ents: fetch(e)))
     text_alert()
     create_buttons()
     root.mainloop()
