@@ -10,7 +10,29 @@ fields = ('User Name', 'Group Name', 'Active Directory Name', 'Password', 'Re-en
 On Startup
 
 Enable and run dbus for GUI
-Disable lxdm
+
+# rc-service dbus start
+# rc-update add dbus
+
+Disable lxdm - replace with our script
+
+# rc-service lxdm stop
+# rc-update remove lxdm
+
+import os
+
+cmd = 'rc-service dbus start'
+os.system(cmd)
+
+cmd = 'rc-update add dbus'
+os.system(cmd)
+
+cmd = 'rc-service lxdm stop'
+os.system(cmd)
+
+cmd = 'rc-update remove lxdm'
+os.system(cmd)
+
 """
 
 users_file_name = "users.json"
@@ -18,7 +40,19 @@ users_file_name = "users.json"
 
 def make_form(root, fields):
     entries = {}
-    for field in fields:
+    for field in fields[:5]:
+        row = Frame(root)
+        lab = Label(row, width=22, text=field + ": ", anchor='w')
+        if field == "Password" or field == "Re-enter Password":
+            ent = Entry(row, show="*")
+        else:
+            ent = Entry(row)
+        ent.insert(0, "")
+        row.pack(side=TOP, fill=X, padx=25, pady=5)
+        lab.pack(side=LEFT)
+        ent.pack(side=RIGHT, expand=YES, fill=X)
+        entries[field] = ent
+    for field in fields[5:]:
         row = Frame(root)
         lab = Label(row, width=22, text=field + ": ", anchor='w')
         if field == "Password" or field == "Re-enter Password":
@@ -103,13 +137,36 @@ def submit(entries):
     """
     After submitting
     
+    Enable and run dbus for GUI
+    
+    # rc-service dbus start
+    # rc-update add dbus
+    
     Enable and run lxdm
+    
+    # rc-service lxdm start
+    # rc-update add lxdm
+    
+    import os
+
+    cmd = 'rc-service dbus start'
+    os.system(cmd)
+    
+    cmd = 'rc-update add dbus'
+    os.system(cmd)
+    
+    cmd = 'rc-service lxdm start'
+    os.system(cmd)
+    
+    cmd = 'rc-update add lxdm'
+    os.system(cmd)
     """
 
 
 def clear(entries):
     for i in range(len(fields)):
         entries[fields[i]].delete(0, 'end')
+    txt_result.config(text="Cleared form!", fg="green")
 
 
 def quit():
@@ -122,7 +179,7 @@ def quit():
 
 if __name__ == '__main__':
     root = Tk()
-    root.geometry("800x600")
+    root.geometry("800x550")
     root.title("Khwarizm Consulting")
     makeLabel(root)
     ents = make_form(root, fields)
