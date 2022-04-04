@@ -205,12 +205,12 @@ def create_buttons():
     """
     top = Frame(root)
     top.pack(side=TOP)
-    b = Button(root, text="Submit", command=(lambda e=ents: submit(e)))
-    c = Button(root, text="Clear", command=(lambda e=ents: clear(e)))
-    d = Button(root, text="Quit", command=quit)
-    b.pack(in_=top, side=LEFT)
-    c.pack(in_=top, side=LEFT)
-    d.pack(in_=top, side=LEFT)
+    submit_button = Button(root, text="Submit", command=(lambda e=ents: submit(e)))
+    clear_button = Button(root, text="Clear", command=(lambda e=ents: clear(e)))
+    quit_button = Button(root, text="Quit", command=quit)
+    submit_button.pack(in_=top, side=LEFT)
+    clear_button.pack(in_=top, side=LEFT)
+    quit_button.pack(in_=top, side=LEFT)
     return
 
 
