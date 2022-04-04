@@ -155,7 +155,7 @@ def clear(entries):
     for i in range(len(fields)):
         entries[fields[i]].delete(0, 'end')
     txt_result.config(text="Cleared form!", fg="green")
-
+    return
 
 def quit():
     result = messagebox.askquestion(
@@ -165,6 +165,23 @@ def quit():
     return
 
 
+def text_alert():
+    global txt_result
+    txt_result = Label(root)
+    txt_result.pack()
+
+
+def create_buttons():
+    top = Frame(root)
+    top.pack(side=TOP)
+    b = Button(root, text="Submit", command=(lambda e=ents: submit(e)))
+    c = Button(root, text="Clear", command=(lambda e=ents: clear(e)))
+    d = Button(root, text="Quit", command=quit)
+    b.pack(in_=top, side=LEFT)
+    c.pack(in_=top, side=LEFT)
+    d.pack(in_=top, side=LEFT)
+
+
 if __name__ == '__main__':
     root = Tk()
     root.geometry("800x550")
@@ -172,17 +189,6 @@ if __name__ == '__main__':
     makeLabel(root)
     ents = make_form(root, fields)
     root.bind('<Return>', (lambda event, e=ents: fetch(e)))
-    global txt_result
-    txt_result = Label(root)
-    txt_result.pack()
-    top = Frame(root)
-    top.pack(side=TOP)
-    b = Button(root, text="Submit", command=(lambda e=ents: submit(e)))
-    c = Button(root, text="Clear", command=(lambda e=ents: clear(e)))
-    d = Button(root, text="Quit", command=quit)
-
-    b.pack(in_=top, side=LEFT)
-    c.pack(in_=top, side=LEFT)
-    d.pack(in_=top, side=LEFT)
-
+    text_alert()
+    create_buttons()
     root.mainloop()
