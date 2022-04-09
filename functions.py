@@ -10,7 +10,7 @@ GUI framework = Tkinter
 This file contains the helper function to be called from main.py
 """
 
-# importing the necessary libraries for working with csv, Tkinter and MySQL
+# importing the necessary libraries for working with csv, JSON, Tkinter and MySQL
 import json
 import os
 from tkinter import Frame, Label, Entry, X, LEFT, RIGHT, YES, messagebox, Button, Tk, TOP
