@@ -1,54 +1,13 @@
-[
-    {
-        "User Name": "Nadeem Abdelkader",
-        "Group Name": "Khwarizm Consulting",
-        "Active Directory Name": "nadeem",
-        "Password": "abc123",
-        "Re-enter Password": "abc123",
-        "Host Name": "localhost",
-        "Interface Name": "Interface1",
-        "IP address": "127.127.0.0.1",
-        "Network Name": "dsl",
-        "Gateway": "Gateway1",
-        "DNS": "1.0.0.0.1.2"
-    },
-    {
-        "User Name": "Test User",
-        "Group Name": "Test Group",
-        "Active Directory Name": "Test AD",
-        "Password": "testpass",
-        "Re-enter Password": "testpass",
-        "Host Name": "Test Host",
-        "Interface Name": "Test Interface",
-        "IP address": "Test IP",
-        "Network Name": "Test Network",
-        "Gateway": "Test Gateway",
-        "DNS": "Test DNS"
-    },
-    {
-        "User Name": "User 1",
-        "Group Name": "Group 1",
-        "Active Directory Name": "Active Directory 1",
-        "Password": "pass1",
-        "Re-enter Password": "pass1",
-        "Host Name": "Host 1",
-        "Interface Name": "Interface 1",
-        "IP address": "IP 1",
-        "Network Name": "Network 1",
-        "Gateway": "Gateway 1",
-        "DNS": "DNS 1"
-    },
-    {
-        "User Name": "admin",
-        "Group Name": "admin",
-        "Active Directory Name": "admin",
-        "Password": "admin",
-        "Re-enter Password": "admin",
-        "Host Name": "admin",
-        "Interface Name": "admin",
-        "IP address": "admin",
-        "Network Name": "admin",
-        "Gateway": "admin",
-        "DNS": "admin"
-    }
-]
+{
+    "User Name": "1",
+    "Group Name": "1",
+    "Active Directory Name": "1",
+    "Password": "1",
+    "Re-enter Password": "1",
+    "Host Name": "1",
+    "Interface Name": "1",
+    "IP address": "1",
+    "Network Name": "1",
+    "Gateway": "1",
+    "DNS": "1"
+}
