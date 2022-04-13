@@ -114,8 +114,8 @@ def submit(entries):
 
         # print(dict)
 
-        filename = str(entries[FIELDS[0]].get()).replace(" ", "") + ".json"
-        filename = "/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename
+        # filename = str(entries[FIELDS[0]].get()).replace(" ", "") + ".json"
+        # filename = "/Users/nadeem/Documents/Khwarizm/Alpine/alpine-install/records/" + filename
         filename = USERS_FILENAME
         with open(filename,
                   "w") as write_file:  # change "w" to "a" if you want to append instead of overwrite
