@@ -18,7 +18,8 @@ from tkinter import Frame, Label, Entry, X, LEFT, RIGHT, YES, messagebox, Button
 # declaring the constants to be used everywhere in the module
 FIELDS = ('User Name', 'Group Name', 'Active Directory Name', 'Password', 'Re-enter Password', 'Host Name',
           'Interface Name', 'IP address', 'Network Name', 'Gateway', 'DNS')
-USERS_FILENAME = "users.json"
+USERS_FILENAME = os.getcwd() + "/tmp/users.json"
+# print(USERS_FILENAME)
 
 
 def make_form(root, fields):

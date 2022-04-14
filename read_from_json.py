@@ -9,9 +9,12 @@ Last updated by Nadeem Abdelkader on 9/4/2022
 import json
 
 # Field names
+import os
+
 FIELDS = ('User Name', 'Group Name', 'Active Directory Name', 'Password', 'Re-enter Password', 'Host Name',
           'Interface Name', 'IP address', 'Network Name', 'Gateway', 'DNS')
 
+USERS_FILENAME = os.getcwd() + "/tmp/users.json"
 
 def read_from_json(filename):
     """
@@ -29,6 +32,6 @@ def read_from_json(filename):
 Example user info retrieval
 """
 # read from users.json
-user_list = read_from_json("users.json")
+user_list = read_from_json(USERS_FILENAME)
 # get the user name of the first user (loop can be used to get all user names or group names, etc...)
 print(user_list.get("User Name"))
