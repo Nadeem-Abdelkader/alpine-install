@@ -1,5 +1,5 @@
 """
-ALPINE INSTALL SCREEN Application
+INSTALL Application
 - Records all submitted user records as a an array of json objects in the file "users.json"
 
 Created by: Nadeem Abdelkader on 3/4/2022
