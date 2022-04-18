@@ -224,6 +224,8 @@ def initialise_window():
     global root, ents
     root = Tk()
     ents = make_form(root, FIELDS)
+    # 800x465 - Alpine
+    # 800x550 - Others
     root.geometry("800x550")
     root.title("Khwarizm Consulting")
     root.bind('<Return>', (lambda event, e=ents: fetch(e)))
